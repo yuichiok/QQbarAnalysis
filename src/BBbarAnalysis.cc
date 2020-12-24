@@ -100,8 +100,8 @@ namespace QQbarProcessor
   void BBbarAnalysis::AnalyseGeneratorBBbar_PS(QQbarMCOperator & opera, float _Rparam_jet_ps, float _pparam_jet_ps)
   {
 
-    vector<fastjet::PseudoJet> particles;
-    fastjet::JetDefinition jet_def(fastjet::ee_genkt_algorithm,_Rparam_jet_ps, _pparam_jet_ps);
+    vector<PseudoJet> particles;
+    JetDefinition jet_def(ee_genkt_algorithm,_Rparam_jet_ps, _pparam_jet_ps);
 
     vector <MCParticle *> bbbar_ps = opera.GetBBbarQuarksPS();
     streamlog_out(DEBUG) << "Hard Process + PS Level \n";
@@ -124,7 +124,7 @@ namespace QQbarProcessor
 	_stats._mc_quark_ps_m[i]=bbbar_ps.at(i)->getMass();
 	_stats._mc_quark_ps_pt[i]=std::sqrt( std::pow(bbbar_ps.at(i)->getMomentum()[0],2) + std::pow(bbbar_ps.at(i)->getMomentum()[1],2) );
 
-	particles.push_back(fastjet::PseudoJet(bbbar_ps.at(i)->getMomentum()[0],bbbar_ps.at(i)->getMomentum()[1],bbbar_ps.at(i)->getMomentum()[2],bbbar_ps.at(i)->getEnergy()));
+	particles.push_back(PseudoJet(bbbar_ps.at(i)->getMomentum()[0],bbbar_ps.at(i)->getMomentum()[1],bbbar_ps.at(i)->getMomentum()[2],bbbar_ps.at(i)->getEnergy()));
 
 	QQbarTools::PrintParticle(bbbar_ps.at(i));
       } else {
@@ -141,10 +141,10 @@ namespace QQbarProcessor
     }
 
     if(particles.size()>1) {
-      fastjet::ClusterSequence cs(particles,jet_def);
+      ClusterSequence cs(particles,jet_def);
       const int njets=2;
       
-      vector<fastjet::PseudoJet> jets = fastjet::sorted_by_E(cs.exclusive_jets(njets));
+      vector<PseudoJet> jets = sorted_by_E(cs.exclusive_jets(njets));
 
       double ymerge_23= cs.exclusive_ymerge(njets);
       double ymerge_12= cs.exclusive_ymerge(njets-1);
@@ -171,7 +171,7 @@ namespace QQbarProcessor
 
       for(int iycut=0; iycut<50; iycut++) {
 	float ycut=float(iycut)*0.001;///_stats._jet_R_norm;
-	//	vector<fastjet::PseudoJet> jets_ycut = sorted_by_E(cs.exclusive_jets_ycut(ycut));
+	//	vector<PseudoJet> jets_ycut = sorted_by_E(cs.exclusive_jets_ycut(ycut));
 	_stats._mc_quark_ps_ycut[iycut]=ycut;
 	//_stats._mc_quark_ps_njets_ycut[iycut]=cs.n_exclusive_jets_ycut(ycut/_stats._jet_R_norm);
 
@@ -183,12 +183,12 @@ namespace QQbarProcessor
 	fastjet::JadePlugin *eejade;
 	eejade = new fastjet::JadePlugin();
 	fastjet::JetDefinition jet_def_eejade(eejade);
-	fastjet::ClusterSequence cs_ja(particles,jet_def_eejade);
+	ClusterSequence cs_ja(particles,jet_def_eejade);
         _stats._mc_quark_ps_njets_ycut[iycut]=cs_ja.n_exclusive_jets_ycut(ycut);                                                                                       
 	 
-	fastjet::EECambridgePlugin eecambridge(ycut);
-	fastjet::JetDefinition jet_def_eecambridge(&eecambridge);
-	fastjet::ClusterSequence cs_eecambridge(particles,jet_def_eecambridge);
+	EECambridgePlugin eecambridge(ycut);
+	JetDefinition jet_def_eecambridge(&eecambridge);
+	ClusterSequence cs_eecambridge(particles,jet_def_eecambridge);
 	_stats._mc_quark_ps_njets_ycut_cambridge[iycut]=cs_eecambridge.n_exclusive_jets_ycut(ycut);
 	
       }
@@ -197,21 +197,21 @@ namespace QQbarProcessor
 
 
     //--- same but for PS & ISR
-    vector<fastjet::PseudoJet> particles2;
-    fastjet::JetDefinition jet_def2(fastjet::ee_genkt_algorithm,_Rparam_jet_ps, _pparam_jet_ps); 
+    vector<PseudoJet> particles2;
+    JetDefinition jet_def2(ee_genkt_algorithm,_Rparam_jet_ps, _pparam_jet_ps); 
 
     vector <MCParticle *> ISR = opera.GetPairParticles(22); 
                                                                
     for(int i=0; i<ISR.size(); i++)
-      particles2.push_back(fastjet::PseudoJet(ISR.at(i)->getMomentum()[0],ISR.at(i)->getMomentum()[1],ISR.at(i)->getMomentum()[2],ISR.at(i)->getEnergy()));         
+      particles2.push_back(PseudoJet(ISR.at(i)->getMomentum()[0],ISR.at(i)->getMomentum()[1],ISR.at(i)->getMomentum()[2],ISR.at(i)->getEnergy()));         
 
     for(int i=0; i<bbbar_ps.size(); i++) 
-      particles2.push_back(fastjet::PseudoJet(bbbar_ps.at(i)->getMomentum()[0],bbbar_ps.at(i)->getMomentum()[1],bbbar_ps.at(i)->getMomentum()[2],bbbar_ps.at(i)->getEnergy()));
+      particles2.push_back(PseudoJet(bbbar_ps.at(i)->getMomentum()[0],bbbar_ps.at(i)->getMomentum()[1],bbbar_ps.at(i)->getMomentum()[2],bbbar_ps.at(i)->getEnergy()));
 
     if(particles2.size()>1) { 
-      fastjet::ClusterSequence cs(particles2,jet_def2);
+      ClusterSequence cs(particles2,jet_def2);
       const int njets=2;                      
-      vector<fastjet::PseudoJet> jets = fastjet::sorted_by_E(cs.exclusive_jets(njets));                                                                                                      
+      vector<PseudoJet> jets = sorted_by_E(cs.exclusive_jets(njets));                                                                                                      
       double ymerge_23= cs.exclusive_ymerge(njets);
       double ymerge_12= cs.exclusive_ymerge(njets-1);
       double dmerge_23= cs.exclusive_dmerge(njets);  
@@ -241,8 +241,8 @@ namespace QQbarProcessor
   //Added by Seidai in 2020.Sep.17
   //MC hadron information provider
   void BBbarAnalysis::AnalyseGeneratorBBbar_Hadron(QQbarMCOperator& opera, float _Rparam_jet_ps, float _pparam_jet_ps) {
-    vector<fastjet::PseudoJet> particles;
-    fastjet::JetDefinition jet_def(fastjet::ee_genkt_algorithm, _Rparam_jet_ps, _pparam_jet_ps);
+    vector<PseudoJet> particles;
+    JetDefinition jet_def(ee_genkt_algorithm, _Rparam_jet_ps, _pparam_jet_ps);
     int error=0;
     
     //Obtain particles which are appeared after intermediate particle
@@ -268,7 +268,7 @@ namespace QQbarProcessor
 	_stats._mc_hadron_m[i]=bbbar_hadron.at(i)->getMass();
 	
         //Consists particle object which has 4-momentum
-	particles.push_back(fastjet::PseudoJet(bbbar_hadron.at(i)->getMomentum()[0], bbbar_hadron.at(i)->getMomentum()[1], bbbar_hadron.at(i)->getMomentum()[2], bbbar_hadron.at(i)->getEnergy()));
+	particles.push_back(PseudoJet(bbbar_hadron.at(i)->getMomentum()[0], bbbar_hadron.at(i)->getMomentum()[1], bbbar_hadron.at(i)->getMomentum()[2], bbbar_hadron.at(i)->getEnergy()));
 	
 	QQbarTools::PrintParticle(bbbar_hadron.at(i));
       } else { //If bbbar_hadron is empty(hadrons nothing), entry just zero
@@ -286,10 +286,10 @@ namespace QQbarProcessor
     //std::cout << "NULL bbbar_hadron:" << error << std::endl;
 
     if(particles.size()>1) {
-      fastjet::ClusterSequence cs(particles, jet_def);
+      ClusterSequence cs(particles, jet_def);
       const int njets=2;
 
-      vector<fastjet::PseudoJet> jets = fastjet::sorted_by_E(cs.exclusive_jets(njets));
+      vector<PseudoJet> jets = sorted_by_E(cs.exclusive_jets(njets));
       double ymerge_23 = cs.exclusive_ymerge(njets);
       double ymerge_12 = cs.exclusive_ymerge(njets-1);
       double dmerge_12 = cs.exclusive_dmerge(njets);
@@ -313,13 +313,13 @@ namespace QQbarProcessor
 	fastjet::JadePlugin *eejade;
 	eejade = new fastjet::JadePlugin();
 	fastjet::JetDefinition jet_def_eejade(eejade);
-	fastjet::ClusterSequence cs_ja(particles, jet_def_eejade);
+	ClusterSequence cs_ja(particles, jet_def_eejade);
 	_stats._mc_hadron_njets_ycut[iycut] = cs_ja.n_exclusive_jets_ycut(ycut);
 	
 	//Cambridge algorithm
-	fastjet::EECambridgePlugin eecambridge(ycut);
-	fastjet::JetDefinition jet_def_eecambridge(&eecambridge);
-	fastjet::ClusterSequence cs_eecambridge(particles, jet_def_eecambridge);
+	EECambridgePlugin eecambridge(ycut);
+	JetDefinition jet_def_eecambridge(&eecambridge);
+	ClusterSequence cs_eecambridge(particles, jet_def_eecambridge);
 	_stats._mc_hadron_njets_ycut_cambridge[iycut] = cs_eecambridge.n_exclusive_jets_ycut(ycut);
       }//ycut loop
     }
@@ -381,7 +381,7 @@ namespace QQbarProcessor
 	_stats._jet_R_norm=(1-TMath::Cos(_Rparam_jet_ps));
 	if(_Rparam_jet_ps>TMath::Pi()) _stats._jet_R_norm=(3+TMath::Cos(_Rparam_jet_ps));
     
-	if(opera.IsEvent()==true) {
+	//if(opera.IsEvent()==true) {
 	  vector < MCParticle * > mcbs = AnalyseGeneratorBBbar(opera);//Hard Process
 	  AnalyseGeneratorISR(opera);
 	  //	vector < MCParticle * > mcbs_ps =
@@ -393,7 +393,7 @@ namespace QQbarProcessor
 	  //match reco jets with quarks BEFORE radiation
 	  MatchB(jets, mcbs, mcvtxcol);
     
-	}
+	  //	}
 
 	// get jet reconstruction variables (merging distances)
 	if(_boolDBDanalysis==true) {
@@ -428,14 +428,13 @@ namespace QQbarProcessor
 	//-----------------------------------------------------------------------------------
 
 	// get pFo + type per jet                                                                                                                                         
-	vector<fastjet::PseudoJet> particles_pfos;                                                                                                                                   
+	vector<PseudoJet> particles_pfos;                                                                                                                                   
         for(int ijet=0; ijet<2; ijet++) {   
 	  streamlog_out(DEBUG) << " JET :" << ijet <<"\n"; 
-          ReconstructedParticle * jet_reco = dynamic_cast< ReconstructedParticle * >(jetcol->getElementAt(ijet));                                                                      
-          vector<ReconstructedParticle*> components = jet_reco->getParticles();                                                                                                        
+          vector<ReconstructedParticle*> components = jets->at(ijet)->getParticles();                                                                                                        
           for(int i=0; i<components.size(); i++) {                                                                                                                              
 	    streamlog_out(DEBUG) << " pfo :" << i;
-	    particles_pfos.push_back(fastjet::PseudoJet(
+	    particles_pfos.push_back(PseudoJet(
 					       components.at(i)->getMomentum()[0],
 					       components.at(i)->getMomentum()[1],
 					       components.at(i)->getMomentum()[2],
@@ -443,7 +442,7 @@ namespace QQbarProcessor
 	  }
 	}
 	/*
-	  vector<fastjet::PseudoJet> particles_pfos;
+	  vector<PseudoJet> particles_pfos;
 	  for (int ipfcol = 0; ipfcol < pfocol->getNumberOfElements(); ipfcol++) {
 	  ReconstructedParticle * particle_pfo = dynamic_cast< ReconstructedParticle * >(pfocol->getElementAt(ipfcol));
 	  particles_pfos.push_back(PseudoJet(particle_pfo->getMomentum()[0],particle_pfo->getMomentum()[1],particle_pfo->getMomentum()[2],particle_pfo->getEnergy()));
@@ -463,13 +462,13 @@ namespace QQbarProcessor
 	  fastjet::JadePlugin *eejade;                                                                                                                                                 
 	  eejade = new fastjet::JadePlugin();                                                                                                                              
 	  fastjet::JetDefinition jet_def_eejade(eejade);                                                                                                
-	  fastjet::ClusterSequence cs_ja(particles_pfos,jet_def_eejade);                                                                                                          
+	  ClusterSequence cs_ja(particles_pfos,jet_def_eejade);                                                                                                          
 	  _stats._mc_quark_ps_njets_ycut[iycut]=cs_ja.n_exclusive_jets_ycut(ycut);
 	 
 	  streamlog_out(DEBUG) << " CAMBRIDGE \n";
-	  fastjet::EECambridgePlugin eecambridge(ycut);
-	  fastjet::JetDefinition jet_def_eecambridge(&eecambridge);
-	  fastjet::ClusterSequence cs_eecambridge(particles_pfos,jet_def_eecambridge);
+	  EECambridgePlugin eecambridge(ycut);
+	  JetDefinition jet_def_eecambridge(&eecambridge);
+	  ClusterSequence cs_eecambridge(particles_pfos,jet_def_eecambridge);
 	  _stats._njets_ycut_cambridge[iycut]=cs_eecambridge.n_exclusive_jets_ycut(ycut); 
 
 	  streamlog_out(DEBUG) << " end \n";
@@ -481,7 +480,6 @@ namespace QQbarProcessor
 	//  <processor name="MySphere"/>
 	//<processor name="MyThrustReconstruction"/>
 	_stats._oblateness = pfocol->getParameters().getFloatVal("Oblateness");
-	_stats._aplanarity = pfocol->getParameters().getFloatVal("aplanarity");
 	_stats._major_thrust_value = pfocol->getParameters().getFloatVal("majorThrustValue");
 	_stats._minor_thrust_value = pfocol->getParameters().getFloatVal("minorThrustValue");
 	_stats._principle_thrust_value = pfocol->getParameters().getFloatVal("principleThrustValue");
@@ -501,6 +499,7 @@ namespace QQbarProcessor
 	_stats._principle_thrust_axis[1]=principleaxis[1];
 	_stats._principle_thrust_axis[2]=principleaxis[2];
 	
+        _stats._aplanarity = jetcol->getParameters().getFloatVal("aplanarity");
 	_stats._sphericity = jetcol->getParameters().getFloatVal("sphericity");
 	std::vector<float> sphericitytensor;
 	jetcol->getParameters().getFloatVals( "sphericity_tensor_eigenvalues" , sphericitytensor) ;
@@ -520,14 +519,14 @@ namespace QQbarProcessor
 
 	// get pFo + type per jet
 	for(int ijet=0; ijet<2; ijet++) {
-	  ReconstructedParticle * jet_reco = dynamic_cast< ReconstructedParticle * >(jetcol->getElementAt(ijet));
-	  vector<ReconstructedParticle*> components = jet_reco->getParticles();
+	  //	  ReconstructedParticle * jet_reco = dynamic_cast< ReconstructedParticle * >(jetcol->getElementAt(ijet));
+	  vector<ReconstructedParticle*> components = jets->at(ijet)->getParticles();
 	  _stats._pfo_n[ijet]=components.size();
 	  if(_stats._pfo_n[ijet]>150) {
 	    _stats._pfo_n[ijet]=150;
 	    std::cout<<"ERROR: nPFOs> 150: "<<components.size()<<std::endl;
 	  }
-	  for(int i=0; i<components.size(); i++) { 
+	  for(int i=0; i<_stats._pfo_n[ijet]; i++) { 
 	    _stats._pfo_E[ijet][i]=components.at(i)->getEnergy();
 	    _stats._pfo_px[ijet][i]=components.at(i)->getMomentum()[0];
 	    _stats._pfo_py[ijet][i]=components.at(i)->getMomentum()[1];
@@ -535,13 +534,9 @@ namespace QQbarProcessor
 	    _stats._pfo_m[ijet][i]=components.at(i)->getMass();        
 	    _stats._pfo_type[ijet][i]=components.at(i)->getType();     
 	    _stats._pfo_charge[ijet][i]=components.at(i)->getCharge();
-	    //  _stats._pfo_n[ijet]++; 
 	  }
-	}
-
 	
-	// Save jet, vtx, track, kaon info 
-	for(int ijet=0; ijet<2; ijet++) {
+	  // Save jet, vtx, track, kaon info 
 	  _stats._jet_E[ijet]=jets->at(ijet)->getEnergy();
 	  _stats._jet_px[ijet]=jets->at(ijet)->getMomentum()[0];
 	  _stats._jet_py[ijet]=jets->at(ijet)->getMomentum()[1];
@@ -554,6 +549,7 @@ namespace QQbarProcessor
 	  vector< Vertex * > * vertices = jets->at(ijet)->GetRecoVertices();
 	  _stats._jet_nvtx[ijet]=vertices->size();
 	  streamlog_out(DEBUG)<<"nvertices = "<<vertices->size()<<std::endl;
+	  if(vertices->size()==0) continue;
 
 	  for( int ivtx=0; ivtx<vertices->size(); ivtx++) {
 	    streamlog_out(DEBUG)<<"   ivtx = "<<ivtx<<std::endl;

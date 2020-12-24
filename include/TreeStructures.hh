@@ -30,7 +30,7 @@ namespace QQbarProcessor
     }
   };
 
- 
+
   struct StatsData  {
   public:
 
@@ -84,7 +84,7 @@ namespace QQbarProcessor
     float _Top1btag;
     float _Top1gamma;
     float _Top1bmomentum;
-		int _Top1bntracks;
+    int _Top1bntracks;
     int _Top1Genbntracks;
     float _Top1mass;
     float _Top1momentum;
@@ -98,7 +98,6 @@ namespace QQbarProcessor
     int _Top1Vtx;
     int _Top1Kaon;
     int _Top1KaonNumber;
-    int _Top1TotalKaonCharge;
     int _Top1KaonCharges[10];
     float _Top1KaonMomentum[10];
     int _Top1bTVCM;
@@ -120,7 +119,6 @@ namespace QQbarProcessor
     int _Top2Vtx;
     int _Top2Kaon;
     int _Top2KaonNumber;
-    int _Top2TotalKaonCharge;
     int _Top2KaonCharges[10];
     float _Top2KaonMomentum[10];
     int _Top2leptonCharge;
@@ -135,7 +133,6 @@ namespace QQbarProcessor
     int _methodRefused;
     int _methodZero;
     int _methodCorrect;
-    int _methodCheck[12];
     int _methodTaken[12];
     int _methodSameCharge[12];
     int _methodZeroCharge[12];
@@ -149,49 +146,6 @@ namespace QQbarProcessor
     float _chiTop2Mass;
     float _chiTop2E;
 
-    float _angleB;
-    float _angleW;
-    float _cosbjets;
-
-    int _chgValue[100];
-
-		
-    // jet information
-    int   _jet_nvtx[2];
-    float _jet_E[2];
-    float _jet_px[2];
-    float _jet_py[2];
-    float _jet_pz[2];
-    float _jet_M[2];
-
-    // jet vtx info
-    int _jet_ntrack[2];
-    int _jet_vtx_isprimary[2][10];
-    int _jet_vtx_ntrack[2][10];
-    float _jet_vtx_charge[2][10];
-
-    // vertex position
-    float _jet_vtx_posX[2][10];
-    float _jet_vtx_posY[2][10];
-    float _jet_vtx_posZ[2][10];
-
-    // jet track info
-    float _jet_track_E[2][10][20];
-    float _jet_track_px[2][10][20];
-    float _jet_track_py[2][10][20];
-    float _jet_track_pz[2][10][20];
-    float _jet_track_p[2][10][20];
-    float _jet_track_charge[2][10][20];
-    int _jet_track_iskaon[2][10][20];
-    int _jet_track_iskaoncheat[2][10][20];
-    float _jet_track_z0[2][10][20];
-    float _jet_track_d0[2][10][20];
-    float _jet_track_phi[2][10][20];
-							
-    // kaon information
-    float _Top1KaondEdx[10];
-						
-    // MC Top info
     int _MCBOscillation;
     int _MCBWcorrect;
     int _MCBBarOscillation;
@@ -209,32 +163,12 @@ namespace QQbarProcessor
     float _MCTopBarcostheta;
     float _MCTopcosWb;
     float _MCTopcosWt;
-    float _MCBEnergy[2];
     float _qMCcostheta[2];
     float _MCMass;
     float _MCPDG;
     float _MCPt;
     float _qMCBcostheta[2];
     float _MCNeutrinoEnergy;
-
-    int _singletopFlag;
-
-    float _MCTop1charge;
-    float _MCTop2charge;
-
-    // MC B Had info
-    int _MCBHadCharge;
-    int _MCBHadNtracks;
-
-    // MC W info
-    float _MCWplusmass;
-    float _MCWminusmass;
-
-    // MC b quark info
-    int _nNonBDaughter;
-    int _NonBDaughterPDG[20];
-
-
     float _totalEnergy;
     float _missedEnergy;
     float _gammaT;
@@ -242,14 +176,12 @@ namespace QQbarProcessor
     //hadronic
     float _chiHad1;
     float _chiTopMass1;
-    float _chiWMass1;
     float _chiTopE1;
     float _chiPbstar1;
     float _chiCosWb1;
     float _chiGammaT1;
     float _chiHad2;
     float _chiTopMass2;
-    float _chiWMass2;
     float _chiTopE2;
     float _chiPbstar2;
     float _chiCosWb2;
@@ -302,58 +234,14 @@ namespace QQbarProcessor
       _qCostheta[1] = -2.0;
       _ZZMass1 = -1;
       _ZZMass2 = -1;
-
-      _nNonBDaughter = 0;
-
-			for (unsigned int i = 0; i < 7; i++) {
-				_methodCheck[i] = -1;
-				_methodTaken[i] = -1;
-				_methodSameCharge[i] = -1;
-				_methodZeroCharge[i] = -1;
-			}
-
-      for (unsigned int i = 0; i < 2; i++) {
-        _jet_E[i]=0;
-        _jet_px[i]=0;
-        _jet_py[i]=0;
-        _jet_pz[i]=0;
-        _jet_M[i]=0;
-
-        _jet_nvtx[i]=0;
-        _jet_ntrack[i]=-1;
-
-        for(int ivx=0; ivx<10; ivx++) {
-          _jet_vtx_isprimary[i][ivx]=-1;
-          _jet_vtx_ntrack[i][ivx]=-1;
-          _jet_vtx_charge[i][ivx]=-1000;
-
-          _jet_vtx_posX[i][ivx] = -1000;
-          _jet_vtx_posY[i][ivx] = -1000;
-          _jet_vtx_posZ[i][ivx] = -1000;
-
-
-          for(int itr=0; itr<20; itr++) {
-            _jet_track_E[i][ivx][itr]=0;
-            _jet_track_px[i][ivx][itr]=0;
-            _jet_track_py[i][ivx][itr]=0;
-            _jet_track_pz[i][ivx][itr]=0;
-            _jet_track_p[i][ivx][itr]=0;
-            _jet_track_charge[i][ivx][itr]=-1000;
-            _jet_track_iskaon[i][ivx][itr]=-1;
-            _jet_track_iskaoncheat[i][ivx][itr]=-1;
-            _jet_track_z0[i][ivx][itr]=-1000;
-            _jet_track_d0[i][ivx][itr]=-1000;
-            _jet_track_phi[i][ivx][itr]=-1000;
-          } //end itr
-        } // end ivtx
-      } // end jet
-
-      for (unsigned int i = 0; i < 20; i++) {
-        _NonBDaughterPDG[i]=0;
+      for (unsigned int i = 0; i < 6; i++) {
+	_methodTaken[i] = -1;
+	_methodSameCharge[i] = -1;
+	_methodZeroCharge[i] = -1;
       }
-
-    } //end clear
+    }
   };
+
 
   struct StatsData_BBbar  {
   public:

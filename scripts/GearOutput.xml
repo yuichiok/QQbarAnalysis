@@ -9,12 +9,12 @@
             <coordinateType value="polar" />
             <modules>
                 <module>
-                    <moduleID value="0" />
-                    <readoutFrequency value="0.000000000e+00" />
-                    <PadRowLayout2D type="FixedPadSizeDiskLayout" rMin="3.840000000e+02" rMax="1.716000000e+03" padHeight="6.000000000e+00" padWidth="1.000000000e+00" maxRow="222" padGap="0.000000000e+00" phiMax="6.283185307e+00" />
-                    <offset x_r="0.000000000e+00" y_phi="0.000000000e+00" />
-                    <angle value="0.000000000e+00" />
-                    <enlargeActiveAreaBy value="0.000000000e+00" />
+                  <moduleID value="0" />
+                  <readoutFrequency value="0.000000000e+00" />
+                  <PadRowLayout2D type="FixedPadSizeDiskLayout" rMin="3.840000000e+02" rMax="1.716000000e+03" padHeight="6.000000000e+00" padWidth="1.000000000e+00" maxRow="222" padGap="0.000000000e+00" phiMax="6.283185307e+00" />
+                  <offset x_r="0.000000000e+00" y_phi="0.000000000e+00" />
+                  <angle value="0.000000000e+00" />
+                  <enlargeActiveAreaBy value="0.000000000e+00" />
                 </module>
             </modules>
             <parameter name="TPCGasProperties_RadLen" type="double" value="1.155205461e+05" />
