@@ -1,0 +1,95 @@
+Sender: LSF System <lsfadmin@ccb101>
+Subject: Job 55257052: <ana005> in cluster <centralcluster> Done
+
+Job <ana005> was submitted from host <ccw04> by user <yokugawa> in cluster <centralcluster> at Wed Jan  6 15:00:41 2021
+Job was executed on host(s) <ccb101>, in queue <s>, as user <yokugawa> in cluster <centralcluster> at Wed Jan  6 15:00:42 2021
+</home/ilc/yokugawa> was used as the home directory.
+</home/ilc/yokugawa/QQbarAnalysis/scripts/scripts_kekcc> was used as the working directory.
+Started at Wed Jan  6 15:00:42 2021
+Terminated at Wed Jan  6 15:39:45 2021
+Results reported at Wed Jan  6 15:39:45 2021
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+./runMarlin2 list/15161_l5.list 13 14 qqbar250_steer.xml l5 eLpR 15161
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   2295.67 sec.
+    Max Memory :                                 1267 MB
+    Average Memory :                             637.47 MB
+    Total Requested Memory :                     4000.00 MB
+    Delta Memory :                               2733.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   2342 sec.
+    Turnaround time :                            2344 sec.
+
+The output (if any) follows:
+
++ flist=list/15161_l5.list
++ start=13
++ end=14
++ inputxml=qqbar250_steer.xml
++ model=l5
++ chiral=eLpR
++ id=15161
++ outputDir=/group/ilc/users/yokugawa/QQbar250/l5/eLpR/15161/000
++ logDir=./log
++ tmpxmlDir=./tmpxml
++ xmlDir=./myxml
+++ seq 13 14
++ for count in '$(seq $start $end)'
+++ tail -1
+++ head -13 list/15161_l5.list
++ input=/group/ilc/grid/storm/prod/ilc/mc-2020/ild/dst-merged/250-SetA/2f_hadronic_eL_pR/ILD_l5_o1_v02/v02-02/00015161/000/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8.slcio
++ echo /group/ilc/grid/storm/prod/ilc/mc-2020/ild/dst-merged/250-SetA/2f_hadronic_eL_pR/ILD_l5_o1_v02/v02-02/00015161/000/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8.slcio
+/group/ilc/grid/storm/prod/ilc/mc-2020/ild/dst-merged/250-SetA/2f_hadronic_eL_pR/ILD_l5_o1_v02/v02-02/00015161/000/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8.slcio
+++ basename /group/ilc/grid/storm/prod/ilc/mc-2020/ild/dst-merged/250-SetA/2f_hadronic_eL_pR/ILD_l5_o1_v02/v02-02/00015161/000/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8.slcio
++ filename=rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8.slcio
++ filename=rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8
++ echo rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8
+rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8
++ tmpxml=./tmpxml/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8.xml
++ lastxml=./myxml/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8.xml
++ log=./log/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8.log
++ rootout1=/group/ilc/users/yokugawa/QQbar250/l5/eLpR/15161/000/vertex_restorer_out/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8_VR.root
++ rootout2=/group/ilc/users/yokugawa/QQbar250/l5/eLpR/15161/000/QQbarProcessor_out/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8.root
++ slcioout=/hsm/ilc/users/yokugawa/QQbar250/l5/eLpR/15161/000/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8.slcio
++ sed -e '/<!-- OUTPUT.slcio -->/i /hsm/ilc/users/yokugawa/QQbar250/l5/eLpR/15161/000/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8.slcio'
++ sed -e '/<!-- OUTPUT2.root -->/i /group/ilc/users/yokugawa/QQbar250/l5/eLpR/15161/000/QQbarProcessor_out/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8.root'
++ sed -e '/<!-- OUTPUT1.root -->/i /group/ilc/users/yokugawa/QQbar250/l5/eLpR/15161/000/vertex_restorer_out/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8_VR.root'
++ sed -e '/<!-- INPUT.slcio -->/i /group/ilc/grid/storm/prod/ilc/mc-2020/ild/dst-merged/250-SetA/2f_hadronic_eL_pR/ILD_l5_o1_v02/v02-02/00015161/000/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8.slcio' qqbar250_steer.xml
++ /sw/ilc/ilcsoft/gcc820/v02-01-02/Marlin/v01-17-01/bin/Marlin ./myxml/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_8.xml
++ echo '13 event finished'
+13 event finished
++ for count in '$(seq $start $end)'
+++ tail -1
+++ head -14 list/15161_l5.list
++ input=/group/ilc/grid/storm/prod/ilc/mc-2020/ild/dst-merged/250-SetA/2f_hadronic_eL_pR/ILD_l5_o1_v02/v02-02/00015161/000/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9.slcio
++ echo /group/ilc/grid/storm/prod/ilc/mc-2020/ild/dst-merged/250-SetA/2f_hadronic_eL_pR/ILD_l5_o1_v02/v02-02/00015161/000/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9.slcio
+/group/ilc/grid/storm/prod/ilc/mc-2020/ild/dst-merged/250-SetA/2f_hadronic_eL_pR/ILD_l5_o1_v02/v02-02/00015161/000/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9.slcio
+++ basename /group/ilc/grid/storm/prod/ilc/mc-2020/ild/dst-merged/250-SetA/2f_hadronic_eL_pR/ILD_l5_o1_v02/v02-02/00015161/000/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9.slcio
++ filename=rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9.slcio
++ filename=rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9
++ echo rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9
+rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9
++ tmpxml=./tmpxml/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9.xml
++ lastxml=./myxml/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9.xml
++ log=./log/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9.log
++ rootout1=/group/ilc/users/yokugawa/QQbar250/l5/eLpR/15161/000/vertex_restorer_out/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9_VR.root
++ rootout2=/group/ilc/users/yokugawa/QQbar250/l5/eLpR/15161/000/QQbarProcessor_out/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9.root
++ slcioout=/hsm/ilc/users/yokugawa/QQbar250/l5/eLpR/15161/000/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9.slcio
++ sed -e '/<!-- OUTPUT.slcio -->/i /hsm/ilc/users/yokugawa/QQbar250/l5/eLpR/15161/000/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9.slcio'
++ sed -e '/<!-- OUTPUT2.root -->/i /group/ilc/users/yokugawa/QQbar250/l5/eLpR/15161/000/QQbarProcessor_out/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9.root'
++ sed -e '/<!-- OUTPUT1.root -->/i /group/ilc/users/yokugawa/QQbar250/l5/eLpR/15161/000/vertex_restorer_out/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9_VR.root'
++ sed -e '/<!-- INPUT.slcio -->/i /group/ilc/grid/storm/prod/ilc/mc-2020/ild/dst-merged/250-SetA/2f_hadronic_eL_pR/ILD_l5_o1_v02/v02-02/00015161/000/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9.slcio' qqbar250_steer.xml
++ /sw/ilc/ilcsoft/gcc820/v02-01-02/Marlin/v01-17-01/bin/Marlin ./myxml/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.n001.d_dstm_15161_9.xml
++ echo '14 event finished'
+14 event finished
