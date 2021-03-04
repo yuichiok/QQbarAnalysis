@@ -15,6 +15,7 @@
 #include <UTIL/PIDHandler.h>
 #include <IMPL/ReconstructedParticleImpl.h>
 #include <IMPL/LCCollectionVec.h>
+#include <IMPL/TrackerHitImpl.h>
 
 // ----- include for verbosity dependend logging ---------
 #include "marlin/VerbosityLevels.h"

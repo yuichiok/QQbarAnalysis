@@ -16,6 +16,7 @@ using IMPL::ReconstructedParticleImpl;
 using IMPL::MCParticleImpl;
 using EVENT::ParticleID;
 using IMPL::ParticleIDImpl;
+using IMPL::TrackerHitImpl;
 
 namespace QQbarProcessor
 {

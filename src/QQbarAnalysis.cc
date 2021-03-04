@@ -11,6 +11,7 @@ using EVENT::ReconstructedParticle;
 using IMPL::ReconstructedParticleImpl;
 using EVENT::ParticleID;
 using IMPL::ParticleIDImpl;
+using IMPL::TrackerHitImpl;
 
 
 namespace QQbarProcessor
@@ -403,7 +404,7 @@ namespace QQbarProcessor
 	  _stats._jet_py[ijet]=jets->at(ijet)->getMomentum()[1];
 	  _stats._jet_pz[ijet]=jets->at(ijet)->getMomentum()[2];
 	  _stats._jet_btag[ijet]=jets->at(ijet)->GetBTag();
-          _stats._jet_ctag[ijet]=jets->at(ijet)->GetCTag();
+      _stats._jet_ctag[ijet]=jets->at(ijet)->GetCTag();
 
 	  //	  ReconstructedParticle * jet_reco = dynamic_cast< ReconstructedParticle * >(jetcol->getElementAt(ijet));
   

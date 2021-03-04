@@ -43,7 +43,7 @@ namespace QQbarProcessor
   }
 
   //Added by Seidai in 2020.Sep.16
-  vector<vector<MCParticle*>>QQbarMCOperator::GetQQbarStables() {
+  vector<vector<MCParticle*>> QQbarMCOperator::GetQQbarStables() {
     //std::cout << "##################################" << std::endl;
     //std::cout << "##         Stable level         ##" << std::endl;
     //std::cout << "##################################" << std::endl;
