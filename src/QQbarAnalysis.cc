@@ -737,11 +737,7 @@ namespace QQbarProcessor
 
 	delete jets;
 
-	streamlog_out(DEBUG)<< " ======================== HERE0 ======================== " <<std::endl;
-
 	ClearVariables();
-
-	streamlog_out(DEBUG)<< " ======================== HERE1 ======================== " <<std::endl;
 
       }
 

@@ -94,7 +94,7 @@
     <processor name="MySphere"/>
     <processor name="MyThrustReconstruction"/>
     <processor name="MyQQbarProcessor"/>
-    <!--processor name="DSTOutput"/-->
+    <processor name="DSTOutput"/>
   </execute>
 
   <!--########  Global  ######################################## -->
