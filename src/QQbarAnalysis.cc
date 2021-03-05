@@ -564,28 +564,31 @@ namespace QQbarProcessor
               _stats._pfo_isoverlay[pfo_recorded]=operaMC.isOverlay(mcpfo);
 	      _stats._pfo_isisr[pfo_recorded]=0;
 	      for(int iisr=0; iisr<isr_stable.size();iisr++) {
-		if(mcpfo==isr_stable.at(iisr)) {
-		  _stats._pfo_isisr[pfo_recorded]=1;
-		  streamlog_out(DEBUG)<<" PFO is related to ISR particle "<<std::endl;
-		  continue;
-		}
+			if(mcpfo==isr_stable.at(iisr)) {
+			  _stats._pfo_isisr[pfo_recorded]=1;
+			  streamlog_out(DEBUG)<<" PFO is related to ISR particle "<<std::endl;
+			  continue;
+			}
 	      }
 
-	      if(_newPandoraPFO==true) {
-		  LCRelationNavigator navigator(evt->getCollection(_Old2NewPandoraPFOsLink));
-		  vector< LCObject * > obj = navigator.getRelatedToObjects(component);
-		  streamlog_out(DEBUG)<<" objSize:"<<obj.size()<<"\n";
-		  ReconstructedParticle * component_pid = dynamic_cast< ReconstructedParticle* >(obj[0]);
-		  _stats._pfo_pid[pfo_recorded] = pidh_1.getParticleID(component_pid, pid_1).getPDG();
-		  streamlog_out(DEBUG)<<" PDG with LikelihoodPID " <<pid_1<<" "<<pidh_1.getParticleID(component_pid, pid_1).getPDG()<<std::endl;
-		  _stats._pfo_pid_likelihood[pfo_recorded]=pidh_1.getParticleID(component_pid, pid_1).getLikelihood();
+	      streamlog_out(DEBUG)<< " ======================== HERE ======================== " <<std::endl;
 
-		} else {
+	      if(_newPandoraPFO==true) {
+			LCRelationNavigator navigator(evt->getCollection(_Old2NewPandoraPFOsLink));
+			vector< LCObject * > obj = navigator.getRelatedToObjects(component);
+			streamlog_out(DEBUG)<<" objSize:"<<obj.size()<<"\n";
+			ReconstructedParticle * component_pid = dynamic_cast< ReconstructedParticle* >(obj[0]);
+			_stats._pfo_pid[pfo_recorded] = pidh_1.getParticleID(component_pid, pid_1).getPDG();
+			streamlog_out(DEBUG)<<" PDG with LikelihoodPID " <<pid_1<<" "<<pidh_1.getParticleID(component_pid, pid_1).getPDG()<<std::endl;
+			_stats._pfo_pid_likelihood[pfo_recorded]=pidh_1.getParticleID(component_pid, pid_1).getLikelihood();
+
+		  } else {
 		  _stats._pfo_pid[pfo_recorded] = pidh_1.getParticleID(component, pid_1).getPDG();
                   streamlog_out(DEBUG)<<" PDG with LikelihoodPID " <<pid_1<<" "<<pidh_1.getParticleID(component, pid_1).getPDG()<<std::endl;
                   _stats._pfo_pid_likelihood[pfo_recorded]=pidh_1.getParticleID(component, pid_1).getLikelihood();
 
 	      }
+
 
 	      _stats._pfo_piddedx[pfo_recorded] = 0;
 	      _stats._pfo_piddedx_likelihood[pfo_recorded]=0;
@@ -595,8 +598,8 @@ namespace QQbarProcessor
 	      if(ijet==1) _stats._pfo_n_j2++;
 		
 	      if(pfo_recorded>999) {
-		streamlog_out(DEBUG)<<"ERROR - pfo_recorded > 150 "<<std::endl;
-		break;
+			streamlog_out(DEBUG)<<"ERROR - pfo_recorded > 150 "<<std::endl;
+			break;
 	      }
 	    }
 	  }
