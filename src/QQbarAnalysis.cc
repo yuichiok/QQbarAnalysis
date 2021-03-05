@@ -582,8 +582,6 @@ namespace QQbarProcessor
 			}
 	      }
 
-	      streamlog_out(DEBUG)<< " ======================== HERE ======================== " <<std::endl;
-
 	      if(_newPandoraPFO==true) {
 			LCRelationNavigator navigator(evt->getCollection(_Old2NewPandoraPFOsLink));
 			vector< LCObject * > obj = navigator.getRelatedToObjects(component);
@@ -734,16 +732,24 @@ namespace QQbarProcessor
 	    streamlog_out(DEBUG)<<"ERROR - pfo_recorded =0 "<<std::endl;
 
 	}//ijet
+
 	_hTree->Fill();	
 
 	delete jets;
+
+	streamlog_out(DEBUG)<< " ======================== HERE0 ======================== " <<std::endl;
+
 	ClearVariables();
+
+	streamlog_out(DEBUG)<< " ======================== HERE1 ======================== " <<std::endl;
+
       }
+
     catch(DataNotAvailableException &e)
       {
 	std::cout << e.what() <<"\n";
       }
-    
+
   }
 
 
