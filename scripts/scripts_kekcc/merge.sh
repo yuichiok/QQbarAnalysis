@@ -14,6 +14,6 @@ if [ ! -d "$dir" ]; then
 	exit 1
 else
 	echo ${dir}
-	hadd -f ${dir}/QQbarProcessor_out/root_merge/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.15162.MERGE50.root ${dir}/QQbarProcessor_out/*.root
+	hadd -f ${dir}/QQbarProcessor_out/root_merge/rv02-02.sv02-02.mILD_l5_o1_v02.E250-SetA.I500010.P2f_z_h.eL.pR.15162.PID.root ${dir}/QQbarProcessor_out/*.root
 fi
 
