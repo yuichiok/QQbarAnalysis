@@ -87,6 +87,7 @@
   <execute>
     <processor name="InitDD4hep"/>
     <processor name="MyRecoCopy" condition="" />
+    <processor name="MyCorrect_Compute_dEdxProcessor"/> 
     <processor name="MyLikelihoodPID" condition="" />
     <!--processor name="FirstJetClustering"/-->
     <processor name="JetClusteringAndFlavorTag"/>
@@ -102,6 +103,7 @@
     <parameter name="LCIOInputFiles">
     <!-- INPUT.slcio --> 
     </parameter>
+    <parameter name="AllowToModifyEvent" value="true" />  
     <parameter name="SkipNEvents" value="0"/>
     <parameter name="SupressCheck" value="false"/>
     <parameter name="Verbosity" options="DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT"> MESSAGE </parameter>
@@ -153,6 +155,15 @@
     <parameter name="RecoParticleCollection" type="string"> NewPandoraPFOs </parameter>
   </processor>
 
+  <processor name="MyCorrect_Compute_dEdxProcessor" type="AngularCorrection_dEdxProcessor">
+    <!-- description not set by author -->
+    <!--parameter for new angular correction dedx= uncorrected_dedx  / f, with f= pol3(theta)-->
+    <parameter name="AngularCorrectionParameters" type="FloatVec"> 0.970205 0.0007506 4.41781e-8 5.8222e-8 </parameter>
+    <!--LDC track collection name-->
+    <parameter name="LDCTrackCollection" type="string" lcioInType="Track">MarlinTrkTracks </parameter>
+    <!--parameters used in the outdated angular correction outdated_dedx= uncorrected_dedx / f, with f = 1. / ( 1.0+[1]*cos(theta)*cos(theta)/[0] )-->
+    <parameter name="Write_dEdx" type="bool">true </parameter>
+  </processor>
 
   <processor name="JetClusteringAndFlavorTag" type="LcfiplusProcessor">
     <!-- run primary and secondary vertex finders -->
