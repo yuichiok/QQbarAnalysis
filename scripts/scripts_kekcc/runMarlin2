@@ -12,7 +12,8 @@ id=$7
 
 #outputDir=/hsm/ilc/users/yokugawa/preset_N_run/${model}/semiLep/${chiral}/${isolep}
 # outputDir=/group/ilc/users/yokugawa/QQbar250/${model}/${chiral}/${id}/000
-outputDir=/group/ilc/users/yokugawa/QQbar250/${model}/${chiral}/${id}/proc_2021
+# outputDir=/group/ilc/users/yokugawa/QQbar250/${model}/${chiral}/${id}/proc_2021
+outputDir=/group/ilc/users/yokugawa/QQbar250/${model}/${chiral}/${id}/dEdx_corr
 
 logDir=./log
 
@@ -31,11 +32,11 @@ for count in $(seq $start $end)
   
   log=${logDir}/${filename}.log
   
-  rootout1=${outputDir}/vertex_restorer_out/${filename}_VR.root
+  # rootout1=${outputDir}/vertex_restorer_out/${filename}_VR.root
   rootout2=${outputDir}/QQbarProcessor_out/${filename}.root
   slcioout=/hsm/ilc/users/yokugawa/QQbar250/${model}/${chiral}/${id}/000/${filename}.slcio
 
-	sed -e "/<!-- INPUT.slcio -->/i $input" $inputxml | sed -e "/<!-- OUTPUT1.root -->/i $rootout1" | sed -e "/<!-- OUTPUT2.root -->/i $rootout2" | sed -e "/<!-- OUTPUT.slcio -->/i $slcioout" > $lastxml
+	sed -e "/<!-- INPUT.slcio -->/i $input" $inputxml | sed -e "/<!-- OUTPUT2.root -->/i $rootout2" | sed -e "/<!-- OUTPUT.slcio -->/i $slcioout" > $lastxml
 
   ${MARLIN}/bin/Marlin $lastxml > $log 2>&1
   

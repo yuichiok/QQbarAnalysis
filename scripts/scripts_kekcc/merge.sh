@@ -7,7 +7,8 @@ chiral=eLpR
 id=15162
 
 # dir=/group/ilc/users/yokugawa/QQbar250/${model}/${chiral}/${id}/000
-dir=/group/ilc/users/yokugawa/QQbar250/${model}/${chiral}/${id}/proc_2021
+# dir=/group/ilc/users/yokugawa/QQbar250/${model}/${chiral}/${id}/proc_2021
+dir=/group/ilc/users/yokugawa/QQbar250/${model}/${chiral}/${id}/dEdx_corr
 
 if [ ! -d "$dir" ]; then
 	echo "The directory does not exist."

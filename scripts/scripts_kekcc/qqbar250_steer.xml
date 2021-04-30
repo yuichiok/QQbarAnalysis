@@ -1,99 +1,21 @@
 <marlin>
 
-  <constants>
+ <constants>
     <!-- ***** Global constant for reconstruction ***** -->
     <!-- The lcgeo directory where to look for the ILD model -->
-    <constant name="lcgeo_DIR" value="/sw/ilc/ilcsoft/gcc820/v02-01-02/lcgeo/v00-16-06" />
-    <!-- ILD detector model -->
-    <constant name="DetectorModel" value="ILD_l5_o1_v02" />
-    <!-- The full compact file name -->
-    <constant name="CompactFile" value="${lcgeo_DIR}/ILD/compact/${DetectorModel}/${DetectorModel}.xml" />
     <constant name="productionfolder" value="/cvmfs/ilc.desy.de/sw/ILDConfig/v02-02/StandardConfig/production" />
-    <!-- ILD calibration file -->
-    <constant name="CalibrationFile" value="${productionfolder}/Calibration/Calibration_${DetectorModel}.xml" />
-    <!-- Whether to run the overlay background -->
-    <!-- WARNING : By setting this value to true (or True), you must ensure that the overlay files are set in the processor parameters -->
-    <constant name="RunOverlay" value="false" />
-    <!-- The center of mass energy (unit GeV). Mainly used for background overlay -->
-    <constant name="CMSEnergy" value="250" />
-    <!-- The energy dependant parameters file to include -->
-    <constant name="EnergyParametersFile" value="${productionfolder}/Config/Parameters${CMSEnergy}GeV.xml" />
-    <!--Whether to run the BeamCal reconstruction-->
-    <constant name="RunBeamCalReco" value="true" />
-    <!--The BeamCal calibration constant, sim hit energy to calibrated calo hit energy-->
-    <constant name="BeamCalCalibrationFactor">79.6</constant>
-    <!-- ***** Input files constants ***** -->
-    <!-- Geometry model dependant calibration constants from external file -->
-    <constant name="EcalBarrelMip">0.0001575</constant>
-    <constant name="EcalEndcapMip">0.0001575</constant>
-    <constant name="EcalRingMip">0.0001575</constant>
-    <constant name="HcalBarrelMip">0.0004925</constant>
-    <constant name="HcalEndcapMip">0.0004725</constant>
-    <constant name="HcalRingMip">0.0004875</constant>
-    <constant name="EcalBarrelEnergyFactors">0.0063520964756 0.012902699188</constant>
-    <constant name="EcalEndcapEnergyFactors">0.0067218419842 0.013653744940</constant>
-    <constant name="EcalRingEnergyFactors">0.0066536339 0.0135151972</constant>
-    <constant name="HcalBarrelEnergyFactors">0.0287783798145</constant>
-    <constant name="HcalEndcapEnergyFactors">0.0285819096797</constant>
-    <constant name="HcalRingEnergyFactors">0.0349940637704</constant>
-    <constant name="MuonCalibration">56.7</constant>
-    <constant name="PandoraEcalToMip">153.846</constant>
-    <constant name="PandoraHcalToMip">37.1747</constant>
-    <constant name="PandoraMuonToMip">10.5263</constant>
-    <constant name="PandoraEcalToEMScale">1.0</constant>
-    <constant name="PandoraHcalToEMScale">1.0</constant>
-    <constant name="PandoraEcalToHadBarrelScale">1.17344504717</constant>
-    <constant name="PandoraEcalToHadEndcapScale">1.17344504717</constant>
-    <constant name="PandoraHcalToHadScale">1.02821419758</constant>
-    <constant name="PandoraSoftwareCompensationWeights">1.59121 -0.0281982 0.000250616 -0.0424222 0.000335128 -2.06112e-05 0.148549 0.199618 -0.0697277</constant>
-    <constant name="ApplyPhotonPFOCorrections" value="true" />
-    <constant name="EcalTechnology" value="SiWEcal" />
-    <constant name="HcalTechnology" value="AHcal" />
-    <constant name="PandoraSettingsFile" value="PandoraSettings/PandoraSettingsDefault.xml" />
-    <constant name="DropCollectionsECal">ECalBarrelScHitsEven ECalBarrelScHitsOdd ECalEndcapScHitsEven ECalEndcapScHitsOdd</constant>
-    <constant name="DropCollectionsHCal">HCalBarrelRPCHits HCalEndcapRPCHits HCalECRingRPCHits</constant>
-    <constant name="AdditionalDropCollectionsREC">${DropCollectionsECal} ${DropCollectionsHCal}</constant>
-    <constant name="dEdXErrorFactor">7.55</constant>
-    <constant name="dEdXSmearingFactor">0.029</constant>
     <constant name="PidPDFFile" value="${productionfolder}/HighLevelReco/PIDFiles/LikelihoodPID_Standard_l5_v01.root" />
     <constant name="PidWeightFiles">${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_02GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_03GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_04GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_05GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_06GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_07GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_08GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_09GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_10GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_11GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_12GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_13GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_14GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_15GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_16GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_17GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_18GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_19GeVP_clusterinfo.weights.xml ${productionfolder}/HighLevelReco/PIDFiles/LowMomMuPiSeparation/TMVAClassification_BDTG_l5_20GeVP_clusterinfo.weights.xml</constant>
-    <constant name="ECalBarrelSimHitCollections">ECalBarrelSiHitsEven ECalBarrelSiHitsOdd</constant>
-    <constant name="ECalEndcapSimHitCollections">ECalEndcapSiHitsEven ECalEndcapSiHitsOdd</constant>
-    <constant name="ECalRingSimHitCollections">EcalEndcapRingCollection</constant>
-    <constant name="HCalBarrelSimHitCollections">HcalBarrelRegCollection</constant>
-    <constant name="HCalEndcapSimHitCollections">HcalEndcapsCollection</constant>
-    <constant name="HCalRingSimHitCollections">HcalEndcapRingCollection</constant>
-    <constant name="ECalSimHitCollections">${ECalBarrelSimHitCollections} ${ECalEndcapSimHitCollections} ${ECalRingSimHitCollections}</constant>
-    <constant name="HCalSimHitCollections">${HCalBarrelSimHitCollections} ${HCalEndcapSimHitCollections} ${HCalRingSimHitCollections}</constant>
-    <constant name="BeamCalBackgroundFile">${productionfolder}/HighLevelReco/BeamCalBackground/BeamCalBackground-E${CMSEnergy}-B3.5-RealisticNominalAntiDid.root</constant>
-    <!-- Energy dependant parameters -->
-    <constant name="ExpectedBgWW" value="0.1256495436" />
-    <constant name="ExpectedBgWB" value="0.297459204" />
-    <constant name="ExpectedBgBW" value="0.29722665" />
-    <constant name="ExpectedBgBB" value="0.829787658" />
-    <constant name="LCFIPlusBeamspotConstraint" value="true" />
-    <constant name="BeamSizeX" value="313.e-6" />
-    <constant name="BeamSizeY" value="3.14e-6" />
-    <constant name="BeamSizeZ" value="202.e-3" />
-    <!-- Output files constants -->
-    <constant name="OutputBaseName" value="StandardReco" />
-    <constant name="AIDAFileName" value="${OutputBaseName}_AIDA" />
-    <constant name="RECOutputFile" value="${OutputBaseName}_REC.slcio" />
-    <constant name="DSTOutputFile" value="${OutputBaseName}_DST.slcio" />
-    <constant name="PfoOutputFile" value="${OutputBaseName}_PfoAnalysis.root" />
-  </constants>
+ </constants>
 
   <!--########  Execute  ######################################## -->
   <execute>
     <processor name="InitDD4hep"/>
-    <processor name="MyRecoCopy" condition="" />
-    <processor name="MyCorrect_Compute_dEdxProcessor"/> 
-    <processor name="MyLikelihoodPID" condition="" />
-    <!--processor name="FirstJetClustering"/-->
+    <processor name="MyCorrect_Compute_dEdxProcessor"/>  
     <processor name="JetClusteringAndFlavorTag"/>
-    <!--processor name="VertexRestorerProcessor"/-->
     <processor name="MySphere"/>
     <processor name="MyThrustReconstruction"/>
+    <processor name="MyLikelihoodPID" />
     <processor name="MyQQbarProcessor"/>
     <processor name="DSTOutput"/>
   </execute>
@@ -104,9 +26,11 @@
     <!-- INPUT.slcio --> 
     </parameter>
     <parameter name="AllowToModifyEvent" value="true" />  
+    <parameter name="MaxRecordNumber" value="0"/>  
+    <!--parameter name="GearXMLFile" value="GearOutput.xml"/-->
     <parameter name="SkipNEvents" value="0"/>
     <parameter name="SupressCheck" value="false"/>
-    <parameter name="Verbosity" options="DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT"> MESSAGE </parameter>
+    <parameter name="Verbosity" options="DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT"> SILENT </parameter>
     <parameter name="RandomSeed" value="1234567890" />
   </global>
 
@@ -115,54 +39,6 @@
     <parameter name="DD4hepXMLFile" type="string">
       /cvmfs/ilc.desy.de/sw/x86_64_gcc82_centos7/v02-02/lcgeo/v00-16-06/ILD/compact/ILD_o1_v05/ILD_o1_v05.xml
     </parameter>
-  </processor>
-
-  <processor name="MyRecoCopy" type="ReconstructedParticleImpl_CopyProcessor">
-    <parameter name="InputCollection"  type="string"> PandoraPFOs </parameter>
-    <parameter name="OutputCollection" type="string"> NewPandoraPFOs </parameter>
-    <parameter name="copyParticleIDs"    type="bool"> false </parameter>
-    <parameter name="copyParticleIDUsed" type="bool"> false </parameter>
-    <parameter name="copyGoodnessOfPID"  type="bool"> false </parameter>
-  </processor>
-
-  <!-- Post reconstruction related : PID, Vertexing, Particle finding, cluster topology -->
-  <processor name="MyLikelihoodPID" type="LikelihoodPIDProcessor">
-    <!--Performs particle identification-->
-    <!--Debugging?-->
-    <parameter name="Debug" type="int">0</parameter>
-    <!--Boundaries for energy binning-->
-    <parameter name="EnergyBoundaries" type="FloatVec">0 1.0e+07</parameter>
-    <!--Name of files containing pdfs for charged particles-->
-    <parameter name="FilePDFName" type="StringVec"> ${PidPDFFile} </parameter>
-    <!--Whether MVA low momentum mu/pi is used or not-->
-    <parameter name="UseLowMomentumMuPiSeparation" type="bool">true</parameter>
-    <!--The BDTG weights files for low momentum mu/pi separation-->
-    <parameter name="FileWeightFormupiSeparationName" type="StringVec">${PidWeightFiles}</parameter>
-    <!--dE/dx parameters for each particle-->                                                    
-    <parameter name="dEdxParameter_electron" type="FloatVec"> -1.28883368e-02  2.72959919e+01  1.10560871e+01 -1.74534200e+00 -9.84887586e-07</parameter>
-    <parameter name="dEdxParameter_muon" type="FloatVec"> 6.49143971e-02 1.55775592e+03 9.31848047e+08 2.32201725e-01 2.50492066e-04 </parameter>
-    <parameter name="dEdxParameter_pion" type="FloatVec"> 6.54955215e-02  8.26239081e+06  1.92933904e+05 2.52743206e-01 2.26657525e-04 </parameter>
-    <parameter name="dEdxParameter_kaon" type="FloatVec"> 7.52235689e-02 1.59710415e+04 1.79625604e+06 3.15315795e-01 2.30414997e-04 </parameter>
-    <parameter name="dEdxParameter_proton" type="FloatVec"> 7.92251260e-02 6.38129720e+04 3.82995071e+04 2.80793601e-01 7.14371743e-04 </parameter>
-    <!--dE/dx normalization-->                                                        
-    <parameter name="dEdxNormalization" type="float">1.350e-7</parameter>              
-    <!--dE/dx error factor(7.55 for l5, 8.53 for s5)-->                                 
-    <parameter name="dEdxErrorFactor" type="float">${dEdXErrorFactor}</parameter>            
-    <!-- Method: Maximum Likelihood(0), Bayesian(1), or risk based Bayesian(2)-->            
-    <parameter name="UseBayesian" type="int">2</parameter>                                              <!-- Cost Matrix for risk based Bayesian(2)-->                                              
-    <parameter name="CostMatrix" type="FloatVec">1.0e-50 1.0 1.5 1.0 1.5 1.0 1.0e-50 3.0 1.0 1.0 1.0 1.0 1.0e-50 1.0 3.0 1.0 1.0 4.0 1.0e-50 2.0 1.0 1.0 5.0 1.0 1.0e-50</parameter>  
-    <!--Name of the PFO collection-->
-    <parameter name="RecoParticleCollection" type="string"> NewPandoraPFOs </parameter>
-  </processor>
-
-  <processor name="MyCorrect_Compute_dEdxProcessor" type="AngularCorrection_dEdxProcessor">
-    <!-- description not set by author -->
-    <!--parameter for new angular correction dedx= uncorrected_dedx  / f, with f= pol3(theta)-->
-    <parameter name="AngularCorrectionParameters" type="FloatVec"> 0.970205 0.0007506 4.41781e-8 5.8222e-8 </parameter>
-    <!--LDC track collection name-->
-    <parameter name="LDCTrackCollection" type="string" lcioInType="Track">MarlinTrkTracks </parameter>
-    <!--parameters used in the outdated angular correction outdated_dedx= uncorrected_dedx / f, with f = 1. / ( 1.0+[1]*cos(theta)*cos(theta)/[0] )-->
-    <parameter name="Write_dEdx" type="bool">true </parameter>
   </processor>
 
   <processor name="JetClusteringAndFlavorTag" type="LcfiplusProcessor">
@@ -284,38 +160,6 @@
     </parameter>
   </processor>
 
-<!-- vertex restorer -->
-<processor name="VertexRestorerProcessor" type="VertexRestorer">
-  <parameter name="ROOTFileName" type="string">
-    <!-- OUTPUT1.root -->
-  </parameter>
-  <parameter name="PFOCollection" type="string"> PandoraPFOs </parameter>
-  <parameter name="PrimaryCollectionName" type="string"> PrimaryVertex </parameter>
-  <parameter name="OutputCollectionName" type="string"> FinalJets_vtx </parameter>
-  <parameter name="OutputJetCollectionName" type="string"> FinalJets </parameter>
-  <parameter name="OutputRelCollectionName" type="string"> FinalJets_rel </parameter>
-  <parameter name="OutputRelRPCollectionName" type="string"> FinalJets_vtx_RP </parameter>
-  <parameter name="SecondaryCollectionName" type="string"> RefinedJets_vtx </parameter>
-  <parameter name="SecondaryRPCollectionName" type="string"> RefinedJets_vtx_RP </parameter>
-  <parameter name="V0CollectionName" type="string"> BuildUpVertex_V0 </parameter>
-  <parameter name="JetCollectionName" type="string"> RefinedJets </parameter>
-  <parameter name="MissedCollectionName" type="string"> MissedParticles </parameter>
-  <parameter name="MCMissedCollectionName" type="string"> MCMissedParticles </parameter>
-  <parameter name="NotUsedTracksCollectionName" type="string"> MarlinTrkTracks </parameter>
-  <parameter name="RecoMcTruthCollectionName" type="string"> RecoMCTruthLink </parameter>
-  <parameter name="MissedVtxCollectionName" type="string"> MissedParticlesVtx </parameter>
-  <parameter name="BStarCollectionName" type="string"> BStar </parameter>
-  <parameter name="MCVertexCollectionName" type="string"> MCVertex </parameter>
-  <parameter name="EGProngsCollectionName" type="string"> EGProngs </parameter>
-  <parameter name="JetRelCollectionName" type="string"> RefinedJets_rel </parameter>
-  <parameter name="UseTracks" type="int" value="1" />
-  <parameter name="TestEfficiency" type="int" value="0" />
-  <parameter name="angleCut" type="float" value="0.05" />
-  <parameter name="offsetCut" type="float" value="0.05" />
-  <parameter name="a" type="float" value="0.005" />
-  <parameter name="b" type="float" value="0.01" />
-</processor>
-
   <processor name="DSTOutput" type="LCIOOutputProcessor">
     <!--DST output: drop all hits, skim MCParticles and keep final Tracks, Clusters and  ReconstructedParticles-->
     <parameter name="LCIOOutputFile" type="string" >
@@ -337,14 +181,53 @@
     <parameter name="inputCollectionName" type="string"> PandoraPFOs </parameter> 
   </processor>
 
+  <processor name="MyCorrect_Compute_dEdxProcessor" type="AngularCorrection_dEdxProcessor">
+    <!-- description not set by author -->
+    <!--parameter for new angular correction dedx= uncorrected_dedx  / f, with f= pol3(theta)-->
+    <parameter name="AngularCorrectionParameters" type="FloatVec"> 0.970205 0.0007506 4.41781e-8 5.8222e-8 </parameter>
+    <!--LDC track collection name-->
+    <parameter name="LDCTrackCollection" type="string" lcioInType="Track">MarlinTrkTracks </parameter>
+    <!--parameters used in the outdated angular correction outdated_dedx= uncorrected_dedx / f, with f = 1. / ( 1.0+[1]*cos(theta)*cos(theta)/[0] )-->
+    <parameter name="Write_dEdx" type="bool">true </parameter>
+  </processor>
+
+  <!-- Post reconstruction related : PID, Vertexing, Particle finding, cluster topology -->
+  <processor name="MyLikelihoodPID" type="LikelihoodPIDProcessor">
+    <!--Performs particle identification-->
+    <!--Debugging?-->
+    <parameter name="Debug" type="int">0</parameter>
+    <!--Boundaries for energy binning-->
+    <parameter name="EnergyBoundaries" type="FloatVec">0 1.0e+07</parameter>
+    <!--Name of files containing pdfs for charged particles-->
+    <parameter name="FilePDFName" type="StringVec"> ${PidPDFFile} </parameter>
+    <!--Whether MVA low momentum mu/pi is used or not-->
+    <parameter name="UseLowMomentumMuPiSeparation" type="bool">true</parameter>
+    <!--The BDTG weights files for low momentum mu/pi separation-->
+    <parameter name="FileWeightFormupiSeparationName" type="StringVec">${PidWeightFiles}</parameter>
+    <!--dE/dx parameters for each particle-->
+    <parameter name="dEdxParameter_electron" type="FloatVec"> -0.00232937 -3.88424e+13 -37881.1 -1.56837 0 </parameter>
+    <parameter name="dEdxParameter_muon" type="FloatVec"> 0.0717375 -16596.5 -4.84028e+07 0.356728 0.000371431 </parameter>
+    <parameter name="dEdxParameter_pion" type="FloatVec"> 0.0733683 51678.4 8.19644e+07 0.453505 0.000404984 </parameter>
+    <parameter name="dEdxParameter_kaon" type="FloatVec"> 0.0792784 3798.12 4.06952e+07 0.450671 0.00050169 </parameter>
+    <parameter name="dEdxParameter_proton" type="FloatVec"> 0.0770318 1053.24 4.95076e+06 0.281489 0.000168616 </parameter>
+    <parameter name="dEdxNormalization" type="float">1.350e-7</parameter>
+    <!--dE/dx error factor(7.55 for l5, 8.53 for s5)-->
+    <parameter name="dEdxErrorFactor" type="float">7.55</parameter>
+    <!-- Method: Maximum Likelihood(0), Bayesian(1), or risk based Bayesian(2)-->
+    <parameter name="UseBayesian" type="int">2</parameter>
+    <!-- Cost Matrix for risk based Bayesian(2)-->
+    <parameter name="CostMatrix" type="FloatVec">1.0e-50 1.0 1.5 1.0 1.5 1.0 1.0e-50 3.0 1.0 1.0 1.0 1.0 1.0e-50 1.0 3.0 1.0 1.0 4.0 1.0e-50 2.0 1.0 1.0 5.0 1.0 1.0e-50</parameter>
+    <!--Version to be added to the name of the calculated methods-->
+    <parameter name="PIDMethodsToRun_version" type="string"> v2 </parameter>
+    <!--Name of the PFO collection-->
+    <parameter name="RecoParticleCollection" type="string"> PandoraPFOs </parameter>
+  </processor> 
+
   <processor name="MyQQbarProcessor" type="QQbarProcessor">
     <parameter name="JetCollectionName" type="string" lcioInType="Vertex"> RefinedJets </parameter>
     <parameter name="JetRelCollectionName" type="string" lcioInType="Vertex"> RefinedJets_rel </parameter>
     <parameter name="MCCollectionName" type="string" lcioInType="MCParticle"> MCParticlesSkimmed</parameter>
     <parameter name="PFOCollection" type="string" lcioInType="ReconstructedParticle"> PandoraPFOs </parameter>  
-    <parameter name="NewPFOCollection" type="string" lcioInType="ReconstructedParticle"> NewPandoraPFOs </parameter>
-    <parameter name="newPandoraPFO" type="bool">true</parameter>
-    <parameter name="Old2NewPandoraPFOsLink" type="string" lcioInType="LCRelation"> Old2NewPandoraPFOsLink </parameter>
     <parameter name="ROOTFileName" type="string">
     <!-- OUTPUT2.root -->
     </parameter>
@@ -352,6 +235,7 @@
     <parameter name="pparam_jet_ps" type="float">1</parameter> 
     <parameter name="AnalysisType" type="int">0</parameter>
     <parameter name="DBDanalysis" type="bool">false</parameter>
+    <parameter name="PIDVersionTag" type="string"> v2 </parameter>
   </processor>
 
 </marlin>
