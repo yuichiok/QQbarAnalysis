@@ -183,9 +183,13 @@ namespace QQbarProcessor
 	_stats._mc_stable_pdg[_stats._mc_stable_n]=qqbar_stable.at(i)->getPDG();
 	_stats._mc_stable_charge[_stats._mc_stable_n]=qqbar_stable.at(i)->getCharge();
 	_stats._mc_stable_m[_stats._mc_stable_n]=qqbar_stable.at(i)->getMass();
-        _stats._mc_stable_isisr[_stats._mc_stable_n]=0;
-        _stats._mc_stable_isoverlay[_stats._mc_stable_n]=0;	
+  _stats._mc_stable_isisr[_stats._mc_stable_n]=0;
+  _stats._mc_stable_isoverlay[_stats._mc_stable_n]=0;	
 	_stats._mc_stable_n++;
+
+  // int nparents_stable = qqbar_stable.at(i)->getParents().size();
+  // std::cout << "number of parents = " << nparents_stable << std::endl;
+
         //Consists particle object which has 4-momentum
 	particles.push_back(PseudoJet(qqbar_stable.at(i)->getMomentum()[0], qqbar_stable.at(i)->getMomentum()[1], qqbar_stable.at(i)->getMomentum()[2], qqbar_stable.at(i)->getEnergy()));
 	
