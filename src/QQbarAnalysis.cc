@@ -672,7 +672,7 @@ namespace QQbarProcessor
         streamlog_out(DEBUG)<<" PFO not clustered in one of the jets, obj.id(): " <<obj->id()<<std::endl;
         ReconstructedParticle* component= dynamic_cast< ReconstructedParticle* >(obj);
         bool write=false;
-        write=WritePFOInfo(evt,component,pfo_recorded,2,0,_newPandoraPFO,_colName,_Old2NewPandoraPFOsLink);
+        write=WritePFOInfo(evt,component,pfo_recorded,2,0,_colName, _versionPID);
         PFOCheatInfo(component,operaMC,isr_stable,pfo_recorded);
         pfo_recorded++;
       }
