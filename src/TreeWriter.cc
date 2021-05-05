@@ -55,6 +55,9 @@ namespace QQbarProcessor
     _hTree->Branch("mc_stable_pz", data._mc_stable_pz, "mc_stable_pz[mc_stable_n]/F");
     _hTree->Branch("mc_stable_m", data._mc_stable_m, "mc_stable_m[mc_stable_n]/F");
     _hTree->Branch("mc_stable_pdg", data._mc_stable_pdg, "mc_stable_pdg[mc_stable_n]/I");
+    
+    _hTree->Branch("mc_stable_parent_pdg", data._mc_stable_parent_pdg, "mc_stable_parent_pdg[mc_stable_n]/I");
+
     _hTree->Branch("mc_stable_charge", data._mc_stable_charge, "mc_stable_charge[mc_stable_n]/F");
     _hTree->Branch("mc_stable_isoverlay", data._mc_stable_isoverlay, "mc_stable_isoverlay[mc_stable_n]/I");
     _hTree->Branch("mc_stable_isisr", data._mc_stable_isisr, "mc_stable_isisr[mc_stable_n]/I");
