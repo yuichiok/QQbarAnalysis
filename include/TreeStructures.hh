@@ -97,6 +97,9 @@ namespace QQbarProcessor
     int _pfo_charge[1000];
     int _pfo_ntracks[1000];
     int _pfo_pdgcheat[1000];
+
+    int _pfo_pdgcheat_parent[1000];
+
     int _pfo_isoverlay[1000];
     int _pfo_isisr[1000];
     int _pfo_vtx[1000];
