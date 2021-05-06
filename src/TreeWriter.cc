@@ -104,6 +104,9 @@ namespace QQbarProcessor
 
     _hTree->Branch("pfo_match", data._pfo_jet_match, "pfo_match[pfo_n]/I");
     _hTree->Branch("pfo_pdgcheat", data._pfo_pdgcheat, "pfo_pdgcheat[pfo_n]/I");
+
+    _hTree->Branch("pfo_pdgcheat_parent", data._pfo_pdgcheat_parent, "pfo_pdgcheat_parent[pfo_n]/I");
+
     _hTree->Branch("pfo_E", data._pfo_E, "pfo_E[pfo_n]/F");
     _hTree->Branch("pfo_px", data._pfo_px, "pfo_px[pfo_n]/F");
     _hTree->Branch("pfo_py", data._pfo_py, "pfo_py[pfo_n]/F");

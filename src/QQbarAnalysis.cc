@@ -187,8 +187,36 @@ namespace QQbarProcessor
   _stats._mc_stable_isoverlay[_stats._mc_stable_n]=0;	
 	_stats._mc_stable_n++;
 
-  vector <MCParticle * > mc_stable_parents = qqbar_stable.at(i)->getParents();
-  if(mc_stable_parents.size()!=0) _stats._mc_stable_parent_pdg[_stats._mc_stable_n] = mc_stable_parents.at(0)->getPDG();
+
+  MCParticle * particle = qqbar_stable.at(i);
+  vector <MCParticle * > parents = particle->getParents();
+  bool ffflag = false;
+  if(parents.size()!=0){
+
+    while(1){
+
+      for(int iparent=0; iparent < parents.size(); iparent++){
+
+        int parent_pdg = parents.at(iparent)->getPDG();
+
+        if( parent_pdg > 0 && parent_pdg < 7 ){
+          _stats._mc_stable_parent_pdg[_stats._mc_stable_n] = parent_pdg;
+          ffflag = true;
+          break;
+        }
+
+      } // for parent
+
+      if(ffflag == true){ 
+        break;
+      }else{
+        particle = parents.at(0);
+        parents  = particle->getParents();
+      }
+
+    } // while
+
+  } // if parent not null
 
 
         //Consists particle object which has 4-momentum
@@ -405,6 +433,13 @@ namespace QQbarProcessor
     MCParticle * mctrack=operaMC.getMCParticle(component);
     _stats._pfo_pdgcheat[pfo_recorded]=operaMC.getPDG(mctrack);
     streamlog_out(DEBUG)<<" PDG CHEAT " <<_stats._pfo_pdgcheat[pfo_recorded]<<std::endl;
+
+    if(mctrack){
+      streamlog_out(DEBUG)<<" PDG CHEAT PARENTS" << std::endl;
+      vector <MCParticle * > mctrack_parents = mctrack->getParents();
+      if(mctrack_parents.size()!=0) _stats._pfo_pdgcheat_parent[pfo_recorded] = mctrack_parents.at(0)->getPDG();
+    }
+
     _stats._pfo_isoverlay[pfo_recorded]=operaMC.isOverlay(mctrack);
     if(_stats._pfo_isoverlay[pfo_recorded]==1) 
       streamlog_out(DEBUG)<<" PFO is related to overlay "<<std::endl;
