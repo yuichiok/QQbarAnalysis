@@ -46,9 +46,6 @@ namespace QQbarProcessor
     float _mc_stable_pz[1000];
     float _mc_stable_m[1000];
     int _mc_stable_pdg[1000];
-
-    // Yuichi
-    int _mc_stable_parent_pdg[1000];
     
     float _mc_stable_charge[1000];
     int _mc_stable_isoverlay[1000];
@@ -154,10 +151,7 @@ namespace QQbarProcessor
 	_mc_quark_ps_pz[i]=0;
         _mc_quark_ps_m[i]=0;
 	_mc_quark_ps_pdg[i]=-1000;
-	_mc_quark_ps_charge[i]=-1000;
-
-  _mc_stable_parent_pdg[i]=0;
-  
+	_mc_quark_ps_charge[i]=-1000;  
       }
 
       _mc_quark_ps_n=0;
@@ -254,7 +248,10 @@ namespace QQbarProcessor
 	_pfo_charge[ipfo]=-1000;
         _pfo_charge[ipfo]=0;
 	_pfo_pdgcheat[ipfo]=-1000;
-	_pfo_isisr[ipfo]=-1;
+
+  _pfo_pdgcheat_parent[ipfo]=0;
+	
+  _pfo_isisr[ipfo]=-1;
 	_pfo_isoverlay[ipfo]=-1;
 	_pfo_vtx[ipfo]=-1;
 	  

@@ -187,38 +187,6 @@ namespace QQbarProcessor
   _stats._mc_stable_isoverlay[_stats._mc_stable_n]=0;	
 	_stats._mc_stable_n++;
 
-
-  MCParticle * particle = qqbar_stable.at(i);
-  vector <MCParticle * > parents = particle->getParents();
-  bool ffflag = false;
-  if(parents.size()!=0){
-
-    while(1){
-
-      for(int iparent=0; iparent < parents.size(); iparent++){
-
-        int parent_pdg = parents.at(iparent)->getPDG();
-
-        if( parent_pdg > 0 && parent_pdg < 7 ){
-          _stats._mc_stable_parent_pdg[_stats._mc_stable_n] = parent_pdg;
-          ffflag = true;
-          break;
-        }
-
-      } // for parent
-
-      if(ffflag == true){ 
-        break;
-      }else{
-        particle = parents.at(0);
-        parents  = particle->getParents();
-      }
-
-    } // while
-
-  } // if parent not null
-
-
         //Consists particle object which has 4-momentum
 	particles.push_back(PseudoJet(qqbar_stable.at(i)->getMomentum()[0], qqbar_stable.at(i)->getMomentum()[1], qqbar_stable.at(i)->getMomentum()[2], qqbar_stable.at(i)->getEnergy()));
 	
@@ -434,11 +402,44 @@ namespace QQbarProcessor
     _stats._pfo_pdgcheat[pfo_recorded]=operaMC.getPDG(mctrack);
     streamlog_out(DEBUG)<<" PDG CHEAT " <<_stats._pfo_pdgcheat[pfo_recorded]<<std::endl;
 
+    // if(mctrack){
+    //   streamlog_out(DEBUG)<<" PDG CHEAT PARENTS" << std::endl;
+    //   vector <MCParticle * > mctrack_parents = mctrack->getParents();
+    //   if(mctrack_parents.size()!=0) _stats._pfo_pdgcheat_parent[pfo_recorded] = mctrack_parents.at(0)->getPDG();
+    // }
+
     if(mctrack){
-      streamlog_out(DEBUG)<<" PDG CHEAT PARENTS" << std::endl;
-      vector <MCParticle * > mctrack_parents = mctrack->getParents();
-      if(mctrack_parents.size()!=0) _stats._pfo_pdgcheat_parent[pfo_recorded] = mctrack_parents.at(0)->getPDG();
+      MCParticle * particle = mctrack;
+      vector <MCParticle * > parents = particle->getParents();
+      int ffflag = 0;
+      if(parents.size()!=0){
+
+        while(ffflag < 2){
+
+          for(int iparent=0; iparent < parents.size(); iparent++){
+
+            int parent_pdg = fabs(parents.at(iparent)->getPDG());
+
+            if( parent_pdg > 0 && parent_pdg < 7 ){
+              _stats._pfo_pdgcheat_parent[pfo_recorded] = parent_pdg;
+              streamlog_out(DEBUG)<<" PDG CHEAT PARENT: " <<parent_pdg<<std::endl;
+              ffflag++;
+            }
+
+          } // for parent
+
+          if(parents.size() != 1) break;
+
+          if(parents.size() == 1){
+            particle = parents.at(0);
+            parents  = particle->getParents();
+          }
+
+        } // while
+
+      } // if parent not null
     }
+
 
     _stats._pfo_isoverlay[pfo_recorded]=operaMC.isOverlay(mctrack);
     if(_stats._pfo_isoverlay[pfo_recorded]==1) 
